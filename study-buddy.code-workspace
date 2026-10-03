@@ -9,5 +9,19 @@
       "server": true,
       "client": true
     }
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Full stack (server + client)",
+        "configurations": [
+          { "name": "Server: FastAPI (debug)", "folder": "server" },
+          { "name": "Client: Next.js (debug)", "folder": "client" }
+        ],
+        "stopAll": true
+      }
+    ]
   }
 }
