@@ -81,6 +81,15 @@ body {
   padding: 0.1em 0.3em;
   font-size: 0.9em;
 }
+/* Math (KaTeX): slightly larger, and long display formulas scroll instead of overflowing on phones. */
+.markdown .katex {
+  font-size: 1.1em;
+}
+.markdown .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
 .markdown table {
   border-collapse: collapse;
 }

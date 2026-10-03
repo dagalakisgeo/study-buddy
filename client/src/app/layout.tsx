@@ -4,6 +4,7 @@ import { Comfortaa, Manrope } from "next/font/google";
 import { APP_NAME, TAGLINE } from "@/components/brand/brand";
 import { NavBar } from "@/components/NavBar";
 
+import "katex/dist/katex.min.css";
 import "./globals.css";
 
 // Both fonts include Greek glyphs: Manrope for reading, Comfortaa for headings and the logo.

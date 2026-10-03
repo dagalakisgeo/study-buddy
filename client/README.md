@@ -13,6 +13,7 @@ to the FastAPI server in `../server`.
 `/` redirects to `/chat`. A status dot in the navigation bar polls `/health` every 30 seconds.
 
 Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown,
+KaTeX (math formulas such as fractions in answers),
 Vitest + Testing Library.
 
 ## Look and feel

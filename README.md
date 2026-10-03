@@ -82,7 +82,7 @@ flowchart LR
 | Vector store | **Weaviate Cloud Sandbox**, or in-memory for local development | Free (sandboxes expire after 14 days) |
 | PDF parsing | pypdf | Free |
 | Server tooling | Poetry, pytest, ruff, mypy | Free |
-| Client | **Next.js 16** (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown | Free |
+| Client | **Next.js 16** (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown, KaTeX (math) | Free |
 | Client tooling | npm, Vitest, Testing Library, ESLint | Free |
 
 ---

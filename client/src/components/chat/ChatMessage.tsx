@@ -1,11 +1,9 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-
 import { MASCOT_NAME } from "@/components/brand/brand";
 import { OwlLogo } from "@/components/brand/OwlLogo";
 import type { ChatEntry } from "@/hooks/useChat";
 
 import { CitationList } from "./CitationList";
+import { MarkdownAnswer } from "./MarkdownAnswer";
 
 function OwlAvatar({ mood }: { mood: "happy" | "sleepy" }) {
   return (
@@ -43,9 +41,7 @@ export function ChatMessage({ message }: { message: ChatEntry }) {
           </div>
         ) : (
           <div className="rounded-3xl rounded-tl-md border border-amber-100 bg-white px-4 py-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-            <div className="markdown">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-            </div>
+            <MarkdownAnswer>{message.content}</MarkdownAnswer>
             <CitationList citations={message.citations ?? []} />
           </div>
         )}
