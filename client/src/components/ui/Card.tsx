@@ -5,15 +5,15 @@ export function Card({
   actions,
   children,
 }: {
-  title?: string;
+  title?: ReactNode;
   actions?: ReactNode;
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+    <section className="rounded-3xl border border-amber-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
       {(title || actions) && (
-        <header className="mb-4 flex items-center justify-between gap-4">
-          {title && <h2 className="text-lg font-semibold">{title}</h2>}
+        <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          {title && <h2 className="font-display text-lg font-bold">{title}</h2>}
           {actions}
         </header>
       )}

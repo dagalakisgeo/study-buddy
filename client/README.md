@@ -1,18 +1,33 @@
 # Study Buddy: Client
 
-This is the Next.js web interface (in Greek) for the Study Buddy RAG server. It runs locally and talks
+This is the student-friendly Next.js web interface (in Greek) for the Study Buddy RAG server. It is
+hosted by **Σοφούλα** 🦉, an owl mascot in a graduation cap. It runs locally and talks
 to the FastAPI server in `../server`.
 
 | Page | Server endpoint(s) | What it does |
 |---|---|---|
 | `/chat`: **Συνομιλία** | `POST /api/v1/query` | Ask questions; answers are rendered as markdown, with source citations (file, page, snippet) |
-| `/documents`: **Έγγραφα** | `POST /api/v1/documents`, `GET /api/v1/documents`, `DELETE /api/v1/documents/{id}` | Upload PDFs (drag and drop), list them and delete them |
+| `/documents`: **Τα βιβλία μου** | `POST /api/v1/documents`, `GET /api/v1/documents`, `DELETE /api/v1/documents/{id}` | Upload PDFs (drag and drop), browse them as a book shelf and delete them |
 | `/health`: **Κατάσταση** | `GET /api/v1/health` | Server and vector store status, refreshed every 10 seconds |
 
 `/` redirects to `/chat`. A status dot in the navigation bar polls `/health` every 30 seconds.
 
 Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown,
 Vitest + Testing Library.
+
+## Look and feel
+
+- **Mascot.** Σοφούλα is drawn as an inline SVG in `src/components/brand/OwlLogo.tsx`. She has three
+  moods: `happy`, `thinking` (while answering or uploading) and `sleepy` (when the server is offline
+  or the library is empty). The same owl is the browser-tab icon (`src/app/icon.svg`).
+- **Names and tagline.** These live in `src/components/brand/brand.ts`. Change `MASCOT_NAME` there to
+  rename the owl everywhere.
+- **Theme.** The colours are a "wisdom teal" `brand` palette plus amber accents, defined in
+  `src/app/globals.css`. The fonts are Manrope for text and Comfortaa for headings, and both include
+  Greek. Light and dark mode follow the system setting.
+- **Tone.** The interface addresses students informally (εσύ) and offers starter questions on the
+  chat page.
+- **Phones.** The layout is responsive and has been checked at a 390px phone width.
 
 ## Prerequisites
 
@@ -90,7 +105,7 @@ npm run lint         # ESLint
 ```
 src/
   app/              # routes: chat/, documents/, health/ (server components with metadata)
-  components/       # UI: chat/, documents/, health/, ui/ (Button, Alert, Card, Spinner), NavBar
+  components/       # UI: brand/ (owl + names), chat/, documents/, health/, ui/, NavBar
   hooks/            # useChat, useDocuments, useHealth: page state, no fetch code
   lib/api/          # client.ts (all HTTP calls), types.ts (mirror of server schemas.py), errors.ts
   lib/config.ts     # NEXT_PUBLIC_* settings

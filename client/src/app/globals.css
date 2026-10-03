@@ -1,27 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #fffaf0;
+  --foreground: #1f2937;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b1220;
+    --foreground: #e5e7eb;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-comfortaa);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #020617;
-    --foreground: #e2e8f0;
+/* "Wisdom teal" brand palette; amber (Tailwind built-in) is the owl's accent colour. */
+@theme {
+  --color-brand-50: #effcf9;
+  --color-brand-100: #c9f5ec;
+  --color-brand-200: #94eadb;
+  --color-brand-300: #58d8c5;
+  --color-brand-400: #2cbfab;
+  --color-brand-500: #14a392;
+  --color-brand-600: #0e8378;
+  --color-brand-700: #106962;
+  --color-brand-800: #12544f;
+  --color-brand-900: #134542;
+  --color-brand-950: #042a29;
+
+  --animate-owl-bob: owl-bob 1.6s ease-in-out infinite;
+
+  @keyframes owl-bob {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-3px) rotate(-3deg);
+    }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
 }
 
 /* Minimal typography for markdown answers from the LLM. */
@@ -40,12 +68,12 @@ body {
   margin-top: 0.25em;
 }
 .markdown strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  font-weight: 600;
+  font-weight: 700;
 }
 .markdown code {
   border-radius: 0.25rem;

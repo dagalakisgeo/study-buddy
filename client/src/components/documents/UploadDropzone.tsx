@@ -2,12 +2,13 @@
 
 import { useRef, useState, type DragEvent } from "react";
 
-import { Spinner } from "@/components/ui/Spinner";
+import { MASCOT_NAME } from "@/components/brand/brand";
+import { OwlLogo } from "@/components/brand/OwlLogo";
 
 /** Returns a Greek error message, or null when the file can be uploaded. */
 export function validatePdf(file: File, maxMb: number): string | null {
   const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
-  if (!isPdf) return `Το «${file.name}» δεν είναι PDF. Υποστηρίζονται μόνο αρχεία PDF.`;
+  if (!isPdf) return `Το «${file.name}» δεν είναι PDF. Μπορείς να ανεβάσεις μόνο αρχεία PDF.`;
   if (file.size > maxMb * 1024 * 1024) {
     return `Το «${file.name}» ξεπερνά το όριο των ${maxMb} MB.`;
   }
@@ -56,27 +57,31 @@ export function UploadDropzone({
         }}
         onDragLeave={() => setDragging(false)}
         onDrop={handleDrop}
-        className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-6 py-10 text-center transition-colors ${
+        className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed px-6 py-10 text-center transition ${
           dragging
-            ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-950"
-            : "border-slate-300 hover:border-indigo-400 dark:border-slate-600"
-        } ${uploading ? "pointer-events-none opacity-70" : ""}`}
+            ? "scale-[1.01] border-brand-500 bg-brand-50 dark:bg-brand-950"
+            : "border-amber-300 bg-amber-50/50 hover:border-brand-400 hover:bg-brand-50/50 dark:border-slate-600 dark:bg-slate-900"
+        } ${uploading ? "pointer-events-none" : ""}`}
       >
         {uploading ? (
           <>
-            <Spinner className="h-6 w-6 text-indigo-600" />
-            <p className="font-medium">Επεξεργασία…</p>
-            <p className="text-sm text-slate-500">
-              Το έγγραφο διαβάζεται και ευρετηριάζεται. Για μεγάλα βιβλία μπορεί να πάρει λίγο χρόνο.
+            <OwlLogo size={72} mood="thinking" className="animate-owl-bob" />
+            <p className="font-display text-lg font-bold">Επεξεργασία…</p>
+            <p className="max-w-sm text-sm text-stone-500 dark:text-slate-400">
+              Η {MASCOT_NAME} διαβάζει το βιβλίο σου. Τα μεγάλα βιβλία θέλουν λίγο χρόνο, κάνε υπομονή! 📖
             </p>
           </>
         ) : (
           <>
-            <span className="text-3xl" aria-hidden="true">
-              📄
+            <span className="text-5xl" aria-hidden="true">
+              {dragging ? "📥" : "📚"}
             </span>
-            <p className="font-medium">Σύρετε ένα PDF εδώ ή κάντε κλικ για επιλογή</p>
-            <p className="text-sm text-slate-500">Μόνο αρχεία PDF, έως {maxMb} MB</p>
+            <p className="font-display text-lg font-bold">
+              {dragging ? "Άφησέ το εδώ!" : "Ρίξε εδώ ένα PDF ή κάνε κλικ για να το επιλέξεις"}
+            </p>
+            <p className="text-sm text-stone-500 dark:text-slate-400">
+              Σχολικά βιβλία, σημειώσεις, φυλλάδια · μόνο PDF, έως {maxMb} MB
+            </p>
           </>
         )}
       </div>
@@ -92,7 +97,7 @@ export function UploadDropzone({
         }}
       />
       {validationError && (
-        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="text-sm font-medium text-red-600 dark:text-red-400">
           {validationError}
         </p>
       )}
