@@ -31,24 +31,32 @@ export function ChatInput({
   }
 
   return (
-    <form onSubmit={submit} className="flex items-end gap-2">
-      <label htmlFor="question" className="sr-only">
-        Ερώτηση
-      </label>
-      <textarea
-        id="question"
-        rows={2}
-        value={question}
-        maxLength={QUESTION_MAX_LENGTH}
-        onChange={(event) => setQuestion(event.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Κάντε μια ερώτηση για τα έγγραφά σας… (Enter για αποστολή, Shift+Enter για νέα γραμμή)"
-        className="min-h-[3rem] flex-1 resize-y rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-slate-600 dark:bg-slate-900 dark:focus:ring-indigo-900"
-      />
-      <Button type="submit" disabled={!canSend} className="h-12">
-        {disabled ? <Spinner /> : null}
-        Αποστολή
-      </Button>
-    </form>
+    <div>
+      <form
+        onSubmit={submit}
+        className="flex items-end gap-2 rounded-3xl border border-amber-200 bg-white p-2 shadow-sm focus-within:border-brand-400 focus-within:ring-4 focus-within:ring-brand-100 dark:border-slate-700 dark:bg-slate-900 dark:focus-within:ring-brand-950"
+      >
+        <label htmlFor="question" className="sr-only">
+          Η ερώτησή σου
+        </label>
+        <textarea
+          id="question"
+          rows={2}
+          value={question}
+          maxLength={QUESTION_MAX_LENGTH}
+          onChange={(event) => setQuestion(event.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Γράψε την ερώτησή σου…"
+          className="min-h-[3rem] flex-1 resize-none bg-transparent px-3 py-2 text-sm outline-none placeholder:text-stone-400"
+        />
+        <Button type="submit" disabled={!canSend} className="h-11 px-5">
+          {disabled ? <Spinner /> : <span aria-hidden="true">🦉</span>}
+          Ρώτα
+        </Button>
+      </form>
+      <p className="mt-1.5 hidden text-center text-xs text-stone-400 sm:block">
+        Enter για αποστολή · Shift+Enter για νέα γραμμή
+      </p>
+    </div>
   );
 }

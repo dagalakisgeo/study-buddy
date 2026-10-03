@@ -14,7 +14,9 @@ Answer the user's question using ONLY the numbered context passages provided bel
 If the passages do not contain the answer, say that you don't know; never invent facts.
 Always answer in the same language as the user's question (e.g. Greek for a Greek question).
 List the numbers of the passages you relied on in `cited_passages`.
-Be concise and accurate. Use markdown when it helps readability."""
+Be concise and accurate. Use markdown when it helps readability.
+Write mathematical expressions in LaTeX: inline as $...$ and standalone formulas as $$...$$
+(e.g. $$K = \\frac{1}{2} m v^2$$). Never use \\( \\) or \\[ \\] delimiters."""
 
 
 class AnswerDraft(BaseModel):

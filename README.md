@@ -8,8 +8,9 @@ Everything runs locally on your PC and uses **free** services only.
 
 - **Server** (`server/`): a FastAPI REST API. It reads PDFs, indexes them in a vector store, and
   answers questions using an LLM.
-- **Client** (`client/`): a Next.js web interface in Greek, with pages for Chat (Συνομιλία),
-  Documents (Έγγραφα) and Status (Κατάσταση).
+- **Client** (`client/`): a friendly Next.js web interface in Greek, written for students. It has
+  pages for Chat (Συνομιλία), My books (Τα βιβλία μου) and Status (Κατάσταση), and is hosted by
+  **Σοφούλα**, an owl mascot in a graduation cap 🦉 (the owl is Athena's symbol of wisdom).
 
 ---
 
@@ -81,7 +82,7 @@ flowchart LR
 | Vector store | **Weaviate Cloud Sandbox**, or in-memory for local development | Free (sandboxes expire after 14 days) |
 | PDF parsing | pypdf | Free |
 | Server tooling | Poetry, pytest, ruff, mypy | Free |
-| Client | **Next.js 16** (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown | Free |
+| Client | **Next.js 16** (App Router, Turbopack), React 19, TypeScript, Tailwind CSS 4, react-markdown, KaTeX (math) | Free |
 | Client tooling | npm, Vitest, Testing Library, ESLint | Free |
 
 ---
@@ -268,9 +269,9 @@ The first server start downloads the embedding model, which can take a minute. W
 
 | Page | What you can do |
 |---|---|
-| **Έγγραφα** (`/documents`) | Drag and drop a PDF (up to 20 MB), see the page and chunk count, view all documents, delete documents |
-| **Συνομιλία** (`/chat`) | Ask questions; Enter sends, Shift+Enter adds a new line. Choose how many sources to use per answer. Expand **Πηγές** to see citations. **Νέα συνομιλία** clears the chat. |
-| **Κατάσταση** (`/health`) | Server and vector store status, refreshed every 10 seconds |
+| **Τα βιβλία μου** (`/documents`) | Drag and drop a PDF (up to 20 MB), see the page and chunk count, browse your books as a shelf of cards, delete books |
+| **Συνομιλία** (`/chat`) | Chat with Σοφούλα. Click a starter question or type your own; Enter sends, Shift+Enter adds a new line. Choose how many sources to use per answer. Expand **Πηγές** to see citations. **Νέα συνομιλία** clears the chat. |
+| **Κατάσταση** (`/health`) | Server and vector store status, refreshed every 10 seconds. The owl is awake when everything works and asleep when the server is off. |
 
 The status dot in the navigation bar shows whether the server is reachable.
 
