@@ -169,8 +169,12 @@ poetry run pytest -m integration
 
 ### Running tests in VS Code
 
-With the `server` folder open, pytest is already enabled by `server/.vscode/settings.json`. Open
-the **Testing** panel (beaker icon) to see and run the tests. To debug a test, right-click it and
+`server/.vscode/settings.json` enables pytest and tells the Python Environments extension to use
+`server\.venv`. Open the **Testing** panel (beaker icon) to see and run the tests.
+
+If discovery fails with `No module named pytest`, VS Code is using the global Python. To fix it,
+run `Ctrl+Shift+P` → **Python: Select Interpreter**, choose the **server** folder, and pick
+`.venv\Scripts\python.exe`. Then click **Refresh Tests** in the Testing panel. To debug a test, right-click it and
 choose **Debug Test**, or use the **Server: pytest (debug)** launch configuration above.
 
 ## Lint & type-check
